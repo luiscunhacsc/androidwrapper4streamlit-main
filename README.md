@@ -77,7 +77,41 @@ Update the same in:
 
 ---
 
-### ❗ Common issue: “Cannot resolve symbol R”
+### 5. Add or Replace the App Icon
+
+To add your custom app icon:
+
+1. In Android Studio, **right-click the `res` folder**
+2. Select:
+   ```
+   New > Image Asset
+   ```
+3. Set:
+   - **Icon Type:** `Launcher Icons (Adaptive and Legacy)`
+   - **Asset Type:** `Image`
+   - Upload your PNG icon (recommended: 512x512)
+4. Leave the name as `ic_launcher` and click **Next > Finish**
+
+This will generate icons for all screen sizes and update the `mipmap-*` folders accordingly.
+
+---
+
+### 6. Update Version Number
+
+Each time you build for release, update the version in `app/build.gradle`:
+
+```groovy
+defaultConfig {
+    versionCode 2          // ← Increase this number (e.g., 3, 4, 5...)
+    versionName "1.1.0"    // ← Update this as well
+}
+```
+
+> 📌 The versionCode must always increase when publishing to the Play Store.
+
+---
+
+## ❗ Common issue: “Cannot resolve symbol R”
 
 This is caused by a mismatch in package names or errors in `res` files.
 
@@ -116,7 +150,7 @@ To publish your app, the **Play Console** requires:
 | Requirement | Description | Suggestions |
 |------------|-------------|-------------|
 | ✅ **Unique package name** | Must not be `com.example` | Use a reverse domain: `com.nome.aplicacao` |
-| 📸 **Screenshots** | At least 2 screenshots (1080x1920) | Use Android Emulator + `Shift+Cmd+S` or [`Screenly](https://app.screenly.io/) |
+| 📸 **Screenshots** | At least 2 screenshots (1080x1920) | Use Android Emulator + `Shift+Cmd+S` or [`Screenly`](https://app.screenly.io/) |
 | 🖼️ **App icon** | 512x512 PNG | Use [Canva](https://www.canva.com/) or [IconKitchen](https://icon.kitchen/) |
 | 📜 **Privacy policy URL** | Public link is required | Use [Notion](https://notion.so), [Google Docs](https://docs.google.com), or [GitHub Pages](https://pages.github.com) |
 | 📋 **Content Rating** | Fill in Google's questionnaire | Done inside Play Console |
